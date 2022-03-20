@@ -114,9 +114,9 @@ class TodoList
   end
 
   def to_s
-    items_str = ""
-    todos.each { |item| items_str += "#{item}\n" }
-    "---- #{title} ----\n#{items_str}"
+    text = "---- #{title} ----\n"
+    text += todos.map(&:to_s).join("\n")
+    text
   end
 
   def each
@@ -164,6 +164,3 @@ list = TodoList.new("Today's Todos")
 list.add(todo1)
 list.add(todo2)
 list.add(todo3)
-
-p list.find_by_title("AAA")
-p list.find_by_title("Clean room")
